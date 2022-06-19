@@ -20,9 +20,7 @@ public class ReadAspect {
     @Pointcut("@annotation(com.yangchd.week07.homework09.annotation.ReadAnnotation)")
     public void read(){};
 
-    /**
-     * 获取参数，改变DataSource为slave节点
-     */
+
     @Around("read()")
     public List<Map<String, Object>> setDatabaseSource(ProceedingJoinPoint point) throws Throwable {
         System.out.println("data source change......");

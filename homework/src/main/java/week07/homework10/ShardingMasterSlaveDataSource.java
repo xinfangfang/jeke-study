@@ -26,7 +26,7 @@ public class ShardingMasterSlaveDataSource {
     private Environment environment;
 
     DataSource createDataSource() throws SQLException {
-        // 获取数据库列表
+        // 获取数据库列表git
         String[] dbs = Objects.requireNonNull(environment.getProperty(DBS)).split(",");
         log.info("DBS::" + Arrays.toString(dbs));
 

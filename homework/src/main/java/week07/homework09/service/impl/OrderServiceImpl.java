@@ -43,7 +43,6 @@ public class OrderServiceImpl implements OrderService {
                 Map<String, Object> data = new HashMap<>(3);
                 data.put("id", resultSet.getLong("id"));
                 data.put("name", resultSet.getString("name"));
-                data.put("description", resultSet.getString("description"));
                 entities.add(data);
             }
             return entities;
