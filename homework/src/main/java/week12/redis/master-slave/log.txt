@@ -1,0 +1,81 @@
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker exec -it redis-6380 redis-cli
+127.0.0.1:6379> SLAVEOF 192.168.0.113  6379
+OK
+127.0.0.1:6379> info Replication
+# Replication
+role:slave
+master_host:192.168.0.113
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:1
+master_sync_in_progress:0
+slave_repl_offset:14
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:2cd7d672d88a3250e3017cab5e04aa9b9f741429
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:14
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:14
+
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker exec -it redis-6381 redis-cli
+127.0.0.1:6379> SLAVEOF 192.168.0.113  6379
+OK
+127.0.0.1:6379> info Replication
+# Replication
+role:slave
+master_host:192.168.0.113
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:4
+master_sync_in_progress:0
+slave_repl_offset:70
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:2cd7d672d88a3250e3017cab5e04aa9b9f741429
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:70
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:71
+repl_backlog_histlen:0
+
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker exec -it redis-6379 redis-cli
+127.0.0.1:6379> info Replication
+# Replication
+role:master
+connected_slaves:2
+slave0:ip=172.17.0.1,port=6379,state=online,offset=112,lag=0
+slave1:ip=172.17.0.1,port=6379,state=online,offset=112,lag=0
+master_replid:2cd7d672d88a3250e3017cab5e04aa9b9f741429
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:112
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:112
+
+127.0.0.1:6379> role
+1) "master"
+2) (integer) 140
+3) 1) 1) "172.17.0.1"
+      2) "6379"
+      3) "140"
+   2) 1) "172.17.0.1"
+      2) "6379"
+      3) "140"
+127.0.0.1:6379> set a 123
+OK
+127.0.0.1:6379> get a
+"123"
+127.0.0.1:6379> exit
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker exec -it redis-6380 redis-cli
+127.0.0.1:6379> get a
+"123"

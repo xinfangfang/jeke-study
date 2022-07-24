@@ -1,0 +1,7 @@
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker stop redis-6379
+dredis-6379
+(base)  carey@CareyWYRdeMacBook-Pro  ~/Documents/docker_data/redis  docker exec -it redis-6380 redis-cli
+127.0.0.1:6379> role
+1) "master"
+2) (integer) 0
+3) (empty list or set)
